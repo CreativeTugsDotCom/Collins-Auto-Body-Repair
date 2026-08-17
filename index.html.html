@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collins Auto Body & Restoration LLC | Swartz Creek, MI</title>
+
+    <!-- Google Fonts: Inter Tight & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS CDN with custom design tokens -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            iCvory: '#F3F0E9',
+                            ivoryDark: '#E8E5DE',
+                            navy: '#101C2C',
+                            navyDark: '#0A121D',
+                            text: '#142235',
+                            muted: '#66717D',
+                            steel: '#526D82',
+                            steelLight: '#8FA1B0',
+                            copper: '#B4774A',
+                            copperHover: '#996138',
+                            border: 'rgba(20, 34, 53, 0.12)',
+                            borderLight: 'rgba(243, 240, 233, 0.15)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Inter Tight', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-ivory: #F3F0E9;
+            --bg-ivory-dark: #E8E5DE;
+            --navy: #101C2C;
+            --text-dark: #142235;
+            --muted: #66717D;
+            --copper: #B4774A;
+        }
+
+        body {
+            background-color: #F3F0E9;
+            color: #142235;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Inter Tight', sans-serif;
+            letter-spacing: -0.025em;
+        }
+
+        /* Subtle grid background pattern */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(20, 34, 53, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(20, 34, 53, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E8E5DE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #526D82;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B4774A;
+        }
+
+        /* Reveal animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Service row hover dynamics */
+        .service-row {
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+        }
+        .service-row:hover .service-arrow {
+            transform: translateX(10px);
+            color: #B4774A;
+        }
+        .service-row:hover .service-num {
+            color: #B4774A;
+        }
+
+        /* Image hover container */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Copper line accent */
+        .copper-accent-line {
+            height: 2px;
+            background: linear-gradient(90deg, #B4774A 0%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="bg-brand-ivory text-brand-text antialiased selection:bg-brand-copper selection:text-white bg-grid-pattern min-h-screen flex flex-col justify-between">
+
+    <!-- Sticky Header -->
+    <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-brand-ivory/95 backdrop-blur-md border-b border-brand-border transition-all duration-300 py-5">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+            
+            <!-- Brand Logo / Name -->
+            <a href="#" class="flex items-center gap-3.5 group shrink-0">
+                <div class="w-9 h-9 bg-brand-navy flex items-center justify-center font-heading font-extrabold text-xl text-brand-ivory tracking-tighter group-hover:bg-brand-copper transition-colors shrink-0 rounded-sm">
+                    C
+                </div>
+                <div class="flex flex-col justify-center leading-none">
+                    <span class="font-heading font-bold text-lg sm:text-xl tracking-tight text-brand-text uppercase leading-none">
+                        COLLINS <span class="text-brand-steel font-normal">AUTO BODY</span>
+                    </span>
+                    <span class="font-mono text-[10px] text-brand-muted tracking-widest uppercase mt-1 leading-none">
+                        & RESTORATION LLC • SWARTZ CREEK
+                    </span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-8 font-heading text-xs font-semibold uppercase tracking-widest text-brand-text/80">
+                <a href="#services" class="hover:text-brand-copper transition-colors py-1">Services</a>
+                <a href="#about" class="hover:text-brand-copper transition-colors py-1">About</a>
+                <a href="#why-us" class="hover:text-brand-copper transition-colors py-1">Why Us</a>
+                <a href="#reviews" class="hover:text-brand-copper transition-colors py-1">Reviews</a>
+                <a href="#contact" class="hover:text-brand-copper transition-colors py-1">Contact</a>
+            </nav>
+
+            <!-- Header CTA & Phone -->
+            <div class="hidden sm:flex items-center space-x-6 shrink-0">
+                <a href="tel:8102755729" class="text-xs font-mono tracking-wider uppercase text-brand-text hover:text-brand-copper transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-brand-copper text-xs"></i>
+                    <span>(810) 275-5729</span>
+                </a>
+                
+                <button onclick="openEstimateModal()" class="bg-brand-navy hover:bg-brand-copper text-brand-ivory font-heading text-xs font-bold uppercase tracking-wider px-5 py-2.5 transition-all flex items-center justify-center gap-2 rounded-sm shadow-sm">
+                    <span>Get a Free Estimate</span>
+                    <i class="fa-solid fa-arrow-right text-[10px] text-brand-copper group-hover:text-white"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-brand-navy p-2 focus:outline-none flex items-center justify-center" aria-label="Toggle Navigation">
+                <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-brand-ivoryDark border-b border-brand-border px-6 py-6 space-y-4 font-heading text-sm uppercase tracking-wider">
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-brand-text hover:text-brand-copper">Services</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-brand-text hover:text-brand-copper">About</a>
+            <a href="#why-us" onclick="toggleMobileMenu()" class="block text-brand-text hover:text-brand-copper">Why Choose Us</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block text-brand-text hover:text-brand-copper">Reviews</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-brand-text hover:text-brand-copper">Contact</a>
+            <div class="pt-4 border-t border-brand-border space-y-3">
+                <a href="tel:8102755729" class="flex items-center gap-3 text-brand-navy font-bold text-base">
+                    <i class="fa-solid fa-phone text-brand-copper"></i> (810) 275-5729
+                </a>
+                <button onclick="toggleMobileMenu(); openEstimateModal();" class="w-full bg-brand-navy text-brand-ivory py-3.5 font-heading text-xs uppercase tracking-widest font-bold rounded-sm">
+                    Get Free Estimate
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section class="relative min-h-[88vh] flex flex-col justify-center border-b border-brand-border py-12 lg:py-20">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Content Column -->
+                <div class="lg:col-span-7 space-y-8 text-left">
+                    
+                    <!-- Location & Category Badge -->
+                    <div class="inline-flex items-center gap-3 border border-brand-border bg-brand-ivoryDark/80 px-4 py-2 font-mono text-xs uppercase tracking-widest text-brand-steel rounded-sm">
+                        <span class="w-2 h-2 rounded-full bg-brand-copper"></span>
+                        <span>SWARTZ CREEK, MICHIGAN • AUTO BODY & RESTORATION</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="font-heading font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-brand-navy uppercase">
+                        AUTO BODY & <br/>
+                        RESTORATION <br/>
+                        <span class="text-brand-copper">DONE RIGHT.</span>
+                    </h1>
+
+                    <!-- Supporting Text -->
+                    <p class="text-brand-muted text-base sm:text-lg max-w-xl font-normal leading-relaxed">
+                        From collision repair and body work to detailed restoration, Collins Auto Body & Restoration focuses on quality craftsmanship and getting your vehicle back to looking its best.
+                    </p>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openEstimateModal()" class="bg-brand-navy hover:bg-brand-navyDark text-brand-ivory font-heading font-bold text-sm uppercase tracking-wider px-8 py-4 transition-all flex items-center gap-3 rounded-sm shadow-md">
+                            <span>GET A FREE ESTIMATE</span>
+                            <i class="fa-solid fa-arrow-right text-xs text-brand-copper"></i>
+                        </button>
+
+                        <a href="tel:8102755729" class="bg-brand-ivoryDark hover:bg-white text-brand-navy border border-brand-border font-heading font-semibold text-sm uppercase tracking-wider px-7 py-4 transition-all flex items-center gap-3 rounded-sm">
+                            <i class="fa-solid fa-phone text-brand-copper text-xs"></i>
+                            <span>CALL (810) 275-5729</span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Right Editorial Image Column -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative border border-brand-border bg-brand-ivoryDark p-3 img-zoom-container rounded-sm shadow-xl">
+                        <div class="relative h-[420px] sm:h-[520px] w-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80" 
+                                 alt="Classic Vehicle Restoration Work" 
+                                 onerror="this.src='https://placehold.co/800x1000/101C2C/F3F0E9?text=Collins+Auto+Body'"
+                                 class="w-full h-full object-cover filter contrast-105 brightness-95">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent"></div>
+                        </div>
+
+                        <!-- Corner Location Badge -->
+                        <div class="absolute bottom-6 left-6 right-6 bg-brand-ivory/95 border border-brand-border p-4 backdrop-blur-md flex items-center justify-between rounded-sm shadow-lg">
+                            <div>
+                                <span class="font-heading text-xs font-bold uppercase tracking-wider text-brand-navy block">SWARTZ CREEK SHOP</span>
+                                <span class="font-mono text-[11px] text-brand-muted block mt-0.5">5420 Baldwin Rd, Swartz Creek, MI</span>
+                            </div>
+                            <i class="fa-solid fa-shield-halved text-brand-copper text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Horizontal Trust Strip -->
+        <section class="border-b border-brand-border bg-brand-ivoryDark py-6">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center font-heading text-xs font-bold uppercase tracking-widest text-brand-steel">
+                    <div class="flex items-center justify-center gap-2 border-r border-brand-border last:border-0 pr-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-copper"></span>
+                        <span>AUTO BODY REPAIR</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 border-r border-brand-border last:border-0 pr-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-copper"></span>
+                        <span>COLLISION REPAIR</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 border-r border-brand-border last:border-0 pr-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-copper"></span>
+                        <span>RESTORATION</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 border-r border-brand-border last:border-0 pr-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-copper"></span>
+                        <span>PAINT & FINISH</span>
+                    </div>
+                    <div class="col-span-2 md:col-span-1 flex items-center justify-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-copper"></span>
+                        <span>QUALITY CRAFTSMANSHIP</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 border-b border-brand-border relative">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- Left Image Block -->
+                    <div class="lg:col-span-6 relative">
+                        <div class="border border-brand-border bg-brand-ivoryDark p-3 img-zoom-container rounded-sm shadow-md">
+                            <div class="relative h-[450px] sm:h-[550px] w-full overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" 
+                                     alt="Precision Automotive Craftsmanship" 
+                                     onerror="this.src='https://placehold.co/800x1000/101C2C/F3F0E9?text=Craftsmanship'"
+                                     class="w-full h-full object-cover filter contrast-110">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Narrative Block -->
+                    <div class="lg:col-span-6 space-y-8 text-left reveal-up">
+                        
+                        <div>
+                            <span class="font-mono text-xs text-brand-copper font-semibold uppercase tracking-widest block mb-2">01 / ABOUT COLLINS</span>
+                            <h2 class="font-heading font-extrabold text-4xl sm:text-6xl uppercase tracking-tight text-brand-navy">
+                                CRAFTSMANSHIP <br/>
+                                <span class="text-brand-copper">YOU CAN SEE.</span>
+                            </h2>
+                        </div>
+
+                        <p class="text-brand-text text-base sm:text-lg leading-relaxed font-normal">
+                            At Collins Auto Body & Restoration, every vehicle gets careful attention to detail and a commitment to quality workmanship.
+                        </p>
+
+                        <p class="text-brand-muted text-sm sm:text-base leading-relaxed font-normal">
+                            Located in Swartz Creek, Michigan, our shop handles both structural collision repairs and dedicated custom restoration projects. We take pride in transparent communication, honest estimates, and taking the time required to make sure your car or truck looks and performs right.
+                        </p>
+
+                        <div class="pt-6 border-t border-brand-border flex flex-wrap gap-8">
+                            <div>
+                                <span class="font-heading font-bold text-2xl text-brand-navy block">100%</span>
+                                <span class="font-mono text-xs text-brand-steel uppercase tracking-wider block mt-1">Dedicated Craftsmanship</span>
+                            </div>
+                            <div class="border-l border-brand-border pl-8">
+                                <span class="font-heading font-bold text-2xl text-brand-navy block">SWARTZ CREEK</span>
+                                <span class="font-mono text-xs text-brand-steel uppercase tracking-wider block mt-1">Michigan Shop Location</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 border-b border-brand-border bg-brand-ivoryDark/50">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <span class="font-mono text-xs text-brand-copper font-semibold uppercase tracking-widest block mb-2">02 / OUR SERVICES</span>
+                        <h2 class="font-heading font-extrabold text-4xl sm:text-6xl uppercase tracking-tight text-brand-navy">
+                            WHAT WE <span class="text-brand-copper">DO</span>
+                        </h2>
+                    </div>
+                    <p class="text-brand-muted font-mono text-xs uppercase tracking-widest max-w-xs">
+                        Clean, professional automotive body & restoration solutions.
+                    </p>
+                </div>
+
+                <!-- Horizontal Editorial Rows -->
+                <div class="divide-y divide-brand-border border-t border-b border-brand-border bg-brand-ivory rounded-sm shadow-sm">
+                    
+                    <!-- Row 01 -->
+                    <div class="service-row py-8 px-6 sm:px-8 cursor-pointer hover:bg-brand-navy group transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-start sm:items-center gap-6 md:w-1/3">
+                            <span class="service-num font-mono text-lg font-bold text-brand-steel transition-colors group-hover:text-brand-copper">01</span>
+                            <h3 class="font-heading font-bold text-2xl sm:text-3xl text-brand-navy uppercase group-hover:text-brand-ivory transition-colors">
+                                COLLISION REPAIR
+                            </h3>
+                        </div>
+                        <p class="text-brand-muted group-hover:text-brand-steelLight text-sm sm:text-base md:w-1/2 leading-relaxed font-normal transition-colors">
+                            Restore your vehicle after an accident with careful body repair and attention to detail.
+                        </p>
+                        <div class="md:w-auto flex justify-end">
+                            <i class="service-arrow fa-solid fa-arrow-right text-brand-steel text-lg transition-all duration-300 group-hover:text-brand-copper"></i>
+                        </div>
+                    </div>
+
+                    <!-- Row 02 -->
+                    <div class="service-row py-8 px-6 sm:px-8 cursor-pointer hover:bg-brand-navy group transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-start sm:items-center gap-6 md:w-1/3">
+                            <span class="service-num font-mono text-lg font-bold text-brand-steel transition-colors group-hover:text-brand-copper">02</span>
+                            <h3 class="font-heading font-bold text-2xl sm:text-3xl text-brand-navy uppercase group-hover:text-brand-ivory transition-colors">
+                                AUTO BODY REPAIR
+                            </h3>
+                        </div>
+                        <p class="text-brand-muted group-hover:text-brand-steelLight text-sm sm:text-base md:w-1/2 leading-relaxed font-normal transition-colors">
+                            Professional bodywork focused on restoring the appearance and condition of your vehicle.
+                        </p>
+                        <div class="md:w-auto flex justify-end">
+                            <i class="service-arrow fa-solid fa-arrow-right text-brand-steel text-lg transition-all duration-300 group-hover:text-brand-copper"></i>
+                        </div>
+                    </div>
+
+                    <!-- Row 03 -->
+                    <div class="service-row py-8 px-6 sm:px-8 cursor-pointer hover:bg-brand-navy group transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-start sm:items-center gap-6 md:w-1/3">
+                            <span class="service-num font-mono text-lg font-bold text-brand-steel transition-colors group-hover:text-brand-copper">03</span>
+                            <h3 class="font-heading font-bold text-2xl sm:text-3xl text-brand-navy uppercase group-hover:text-brand-ivory transition-colors">
+                                PAINT & REFINISHING
+                            </h3>
+                        </div>
+                        <p class="text-brand-muted group-hover:text-brand-steelLight text-sm sm:text-base md:w-1/2 leading-relaxed font-normal transition-colors">
+                            Clean, professional finishing work designed to bring the exterior back to life.
+                        </p>
+                        <div class="md:w-auto flex justify-end">
+                            <i class="service-arrow fa-solid fa-arrow-right text-brand-steel text-lg transition-all duration-300 group-hover:text-brand-copper"></i>
+                        </div>
+                    </div>
+
+                    <!-- Row 04 -->
+                    <div class="service-row py-8 px-6 sm:px-8 cursor-pointer hover:bg-brand-navy group transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-start sm:items-center gap-6 md:w-1/3">
+                            <span class="service-num font-mono text-lg font-bold text-brand-steel transition-colors group-hover:text-brand-copper">04</span>
+                            <h3 class="font-heading font-bold text-2xl sm:text-3xl text-brand-navy uppercase group-hover:text-brand-ivory transition-colors">
+                                VEHICLE RESTORATION
+                            </h3>
+                        </div>
+                        <p class="text-brand-muted group-hover:text-brand-steelLight text-sm sm:text-base md:w-1/2 leading-relaxed font-normal transition-colors">
+                            Detailed restoration work for vehicles that deserve more than a basic repair.
+                        </p>
+                        <div class="md:w-auto flex justify-end">
+                            <i class="service-arrow fa-solid fa-arrow-right text-brand-steel text-lg transition-all duration-300 group-hover:text-brand-copper"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Why Choose Us Dark Navy Section -->
+        <section id="why-us" class="py-24 bg-brand-navy text-brand-ivory border-b border-brand-border">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                
+                <div class="max-w-2xl mb-16 text-left">
+                    <span class="font-mono text-xs text-brand-copper font-semibold uppercase tracking-widest block mb-2">03 / WHY CHOOSE US</span>
+                    <h2 class="font-heading font-extrabold text-4xl sm:text-6xl uppercase tracking-tight text-brand-ivory">
+                        WHY <span class="text-brand-copper">COLLINS?</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <div class="border border-brand-borderLight bg-brand-navyDark p-8 space-y-4 text-left rounded-sm">
+                        <span class="font-mono text-xs font-bold text-brand-copper uppercase block">01 / ATTENTION</span>
+                        <h3 class="font-heading font-bold text-xl uppercase text-brand-ivory">QUALITY FIRST</h3>
+                        <p class="text-brand-steelLight text-sm leading-relaxed font-normal">
+                            Attention to the details that make the finished vehicle look right.
+                        </p>
+                    </div>
+
+                    <div class="border border-brand-borderLight bg-brand-navyDark p-8 space-y-4 text-left rounded-sm">
+                        <span class="font-mono text-xs font-bold text-brand-copper uppercase block">02 / TRANSPARENCY</span>
+                        <h3 class="font-heading font-bold text-xl uppercase text-brand-ivory">PERSONAL SERVICE</h3>
+                        <p class="text-brand-steelLight text-sm leading-relaxed font-normal">
+                            A straightforward experience without unnecessary complexity.
+                        </p>
+                    </div>
+
+                    <div class="border border-brand-borderLight bg-brand-navyDark p-8 space-y-4 text-left rounded-sm">
+                        <span class="font-mono text-xs font-bold text-brand-copper uppercase block">03 / PRECISION</span>
+                        <h3 class="font-heading font-bold text-xl uppercase text-brand-ivory">CRAFTSMANSHIP</h3>
+                        <p class="text-brand-steelLight text-sm leading-relaxed font-normal">
+                            Focused on doing the work properly rather than simply getting the vehicle out the door.
+                        </p>
+                    </div>
+
+                    <div class="border border-brand-borderLight bg-brand-navyDark p-8 space-y-4 text-left rounded-sm">
+                        <span class="font-mono text-xs font-bold text-brand-copper uppercase block">04 / CARE</span>
+                        <h3 class="font-heading font-bold text-xl uppercase text-brand-ivory">RESTORATION MINDED</h3>
+                        <p class="text-brand-steelLight text-sm leading-relaxed font-normal">
+                            Care and precision for customers who want their vehicle looking its best.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Large Visual Banner Section -->
+        <section class="relative py-32 border-b border-brand-border overflow-hidden">
+            <div class="absolute inset-0 z-0 img-zoom-container">
+                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1800&q=80" 
+                     alt="Automotive Paint & Metal Polish Detail" 
+                     onerror="this.src='https://placehold.co/1600x800/101C2C/F3F0E9?text=Automotive+Craftsmanship'"
+                     class="w-full h-full object-cover filter contrast-125 brightness-50">
+                <div class="absolute inset-0 bg-brand-navy/60"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 text-left">
+                <div class="max-w-2xl space-y-4">
+                    <span class="font-mono text-xs text-brand-copper font-semibold uppercase tracking-widest block">SWARTZ CREEK, MICHIGAN</span>
+                    <h2 class="font-heading font-extrabold text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight text-white leading-none">
+                        YOUR VEHICLE. <br/>
+                        <span class="text-brand-copper">OUR CRAFT.</span>
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholder Reviews Section -->
+        <section id="reviews" class="py-24 border-b border-brand-border">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 text-left">
+                    <div>
+                        <div class="inline-block border border-brand-border bg-brand-ivoryDark px-3 py-1 text-brand-steel font-mono text-[11px] uppercase tracking-widest mb-3 rounded-sm">
+                            [ MOCKUP SAMPLE REVIEWS ]
+                        </div>
+                        <h2 class="font-heading font-extrabold text-4xl sm:text-6xl uppercase tracking-tight text-brand-navy">
+                            CLIENT <span class="text-brand-copper">REVIEWS</span>
+                        </h2>
+                    </div>
+                    <p class="text-brand-muted font-mono text-xs uppercase tracking-widest max-w-xs">
+                        Verified customer reviews will be displayed here.
+                    </p>
+                </div>
+
+                <!-- 3 Placeholder Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    
+                    <div class="border border-brand-border bg-brand-ivoryDark p-8 space-y-6 flex flex-col justify-between rounded-sm shadow-sm">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-1 text-brand-copper text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-brand-muted text-sm italic leading-relaxed font-normal">
+                                “Customer testimonial goes here. Review text describing quality bodywork, attention to detail, and overall experience with Collins Auto Body.”
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border">
+                            <span class="font-heading font-bold text-sm uppercase text-brand-navy block">Verified Customer Review</span>
+                            <span class="font-mono text-xs text-brand-steel uppercase block mt-0.5">Swartz Creek Client</span>
+                        </div>
+                    </div>
+
+                    <div class="border border-brand-border bg-brand-ivoryDark p-8 space-y-6 flex flex-col justify-between rounded-sm shadow-sm">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-1 text-brand-copper text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-brand-muted text-sm italic leading-relaxed font-normal">
+                                “Verified customer review will be displayed here. Feedback regarding repair craftsmanship and clear communication throughout the process.”
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border">
+                            <span class="font-heading font-bold text-sm uppercase text-brand-navy block">Verified Customer Review</span>
+                            <span class="font-mono text-xs text-brand-steel uppercase block mt-0.5">Collision Repair Client</span>
+                        </div>
+                    </div>
+
+                    <div class="border border-brand-border bg-brand-ivoryDark p-8 space-y-6 flex flex-col justify-between rounded-sm shadow-sm">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-1 text-brand-copper text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-brand-muted text-sm italic leading-relaxed font-normal">
+                                “Customer testimonial goes here. Additional feedback highlighting paint finishing, panel restoration, and timely service.”
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-border">
+                            <span class="font-heading font-bold text-sm uppercase text-brand-navy block">Verified Customer Review</span>
+                            <span class="font-mono text-xs text-brand-steel uppercase block mt-0.5">Restoration Client</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Service Area Section -->
+        <section class="py-16 border-b border-brand-border bg-brand-ivoryDark/40">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-left">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                    <div>
+                        <span class="font-mono text-xs text-brand-copper font-semibold uppercase tracking-widest block mb-1">LOCAL COMMUNITY</span>
+                        <h3 class="font-heading font-bold text-2xl sm:text-3xl uppercase text-brand-navy">
+                            PROUDLY SERVING SWARTZ CREEK & SURROUNDING AREAS
+                        </h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3 font-mono text-xs uppercase text-brand-steel">
+                        <span class="border border-brand-border bg-brand-ivory px-3 py-1.5 rounded-sm">Swartz Creek</span>
+                        <span class="border border-brand-border bg-brand-ivory px-3 py-1.5 rounded-sm">Flint</span>
+                        <span class="border border-brand-border bg-brand-ivory px-3 py-1.5 rounded-sm">Grand Blanc</span>
+                        <span class="border border-brand-border bg-brand-ivory px-3 py-1.5 rounded-sm">Genesee County</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Dark CTA Banner -->
+        <section class="py-24 border-b border-brand-border bg-brand-navy text-brand-ivory relative text-left">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                <div class="max-w-3xl space-y-8">
+                    
+                    <h2 class="font-heading font-extrabold text-5xl sm:text-7xl uppercase tracking-tight text-brand-ivory leading-none">
+                        READY TO BRING YOUR <br/>
+                        <span class="text-brand-copper">VEHICLE BACK TO LIFE?</span>
+                    </h2>
+
+                    <p class="text-brand-steelLight text-base sm:text-lg max-w-xl font-normal leading-relaxed">
+                        Tell us what your vehicle needs and take the first step toward getting it back on the road.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openEstimateModal()" class="bg-brand-copper hover:bg-brand-copperHover text-white font-heading font-bold text-sm uppercase tracking-wider px-8 py-4 transition-all flex items-center gap-3 rounded-sm shadow-md">
+                            <span>GET A FREE ESTIMATE</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+
+                        <a href="tel:8102755729" class="bg-brand-navyDark hover:bg-black text-brand-ivory border border-brand-borderLight font-heading font-semibold text-sm uppercase tracking-wider px-7 py-4 transition-all flex items-center gap-3 rounded-sm">
+                            <i class="fa-solid fa-phone text-brand-copper text-xs"></i>
+                            <span>CALL (810) 275-5729</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Estimate Form Section -->
+        <section id="contact" class="py-24 border-b border-brand-border">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                    
+                    <!-- Left Contact Info Column -->
+                    <div class="lg:col-span-5 space-y-8 text-left">
+                        <div>
+                            <span class="font-mono text-xs text-brand-copper font-semibold uppercase tracking-widest block mb-2">04 / GET IN TOUCH</span>
+                            <h2 class="font-heading font-extrabold text-4xl sm:text-6xl uppercase tracking-tight text-brand-navy">
+                                CONTACT <span class="text-brand-copper">US</span>
+                            </h2>
+                        </div>
+
+                        <div class="space-y-6 pt-4 font-sans">
+                            
+                            <div class="border-t border-brand-border pt-6 space-y-1">
+                                <span class="font-mono text-xs text-brand-steel uppercase block">BUSINESS NAME</span>
+                                <h3 class="font-heading font-bold text-xl text-brand-navy">Collins Auto Body & Restoration LLC</h3>
+                            </div>
+
+                            <div class="border-t border-brand-border pt-6 space-y-1">
+                                <span class="font-mono text-xs text-brand-steel uppercase block">LOCATION</span>
+                                <p class="text-brand-text text-base">5420 Baldwin Rd, Swartz Creek, MI 48473</p>
+                            </div>
+
+                            <div class="border-t border-brand-border pt-6 space-y-1">
+                                <span class="font-mono text-xs text-brand-steel uppercase block">PHONE NUMBER</span>
+                                <a href="tel:8102755729" class="text-brand-navy hover:text-brand-copper font-heading font-bold text-2xl transition-colors">(810) 275-5729</a>
+                            </div>
+
+                            <div class="border-t border-brand-border pt-6 space-y-1">
+                                <span class="font-mono text-xs text-brand-steel uppercase block">EMAIL INQUIRIES</span>
+                                <a href="mailto:tcollinsautobody@gmail.com" class="text-brand-navy hover:text-brand-copper text-base transition-colors">tcollinsautobody@gmail.com</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Right Estimate Form Column -->
+                    <div class="lg:col-span-7">
+                        <div class="border border-brand-border bg-brand-ivoryDark p-8 sm:p-10 text-left rounded-sm shadow-sm">
+                            <div class="mb-8 border-b border-brand-border pb-6">
+                                <h3 class="font-heading font-bold text-2xl uppercase text-brand-navy">REQUEST AN ESTIMATE</h3>
+                                <p class="text-brand-steel font-mono text-xs uppercase mt-1">Send your vehicle details for a fast response.</p>
+                            </div>
+
+                            <form onsubmit="handleFormSubmit(event)" class="space-y-5 font-mono text-xs">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-brand-steel mb-1.5 uppercase">NAME *</label>
+                                        <input type="text" required placeholder="John Doe" class="w-full bg-brand-ivory border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-brand-steel mb-1.5 uppercase">PHONE *</label>
+                                        <input type="tel" required placeholder="(810) 275-5729" class="w-full bg-brand-ivory border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-brand-steel mb-1.5 uppercase">EMAIL *</label>
+                                        <input type="email" required placeholder="john@example.com" class="w-full bg-brand-ivory border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-brand-steel mb-1.5 uppercase">VEHICLE YEAR / MAKE / MODEL *</label>
+                                        <input type="text" required placeholder="e.g. 1969 Ford Mustang" class="w-full bg-brand-ivory border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-brand-steel mb-1.5 uppercase">WHAT DOES YOUR VEHICLE NEED?</label>
+                                    <textarea rows="4" placeholder="Describe the damage, bodywork goals, or restoration details..." class="w-full bg-brand-ivory border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full bg-brand-navy hover:bg-brand-copper text-brand-ivory py-4 font-heading font-bold text-sm uppercase tracking-wider transition-all rounded-sm shadow-sm">
+                                    SEND REQUEST
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-brand-navy border-t border-brand-border text-left font-mono text-xs text-brand-steelLight py-16">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-brand-borderLight">
+                
+                <!-- Col 1: Brand -->
+                <div class="md:col-span-5 space-y-4">
+                    <span class="font-heading font-bold text-2xl text-brand-ivory uppercase block">
+                        COLLINS <span class="text-brand-steel font-normal">AUTO BODY</span>
+                    </span>
+                    <p class="text-brand-steelLight text-xs leading-relaxed font-sans max-w-sm">
+                        Auto Body • Collision Repair • Restoration. Serving Swartz Creek, Michigan and surrounding areas with dedicated craftsmanship.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div class="md:col-span-3 space-y-3">
+                    <span class="text-brand-ivory uppercase font-bold block mb-2 font-heading">NAVIGATION</span>
+                    <a href="#services" class="block hover:text-brand-copper transition-colors">Services</a>
+                    <a href="#about" class="block hover:text-brand-copper transition-colors">About Us</a>
+                    <a href="#why-us" class="block hover:text-brand-copper transition-colors">Why Choose Us</a>
+                    <a href="#reviews" class="block hover:text-brand-copper transition-colors">Reviews</a>
+                    <a href="#contact" class="block hover:text-brand-copper transition-colors">Contact</a>
+                </div>
+
+                <!-- Col 3: Contact Info -->
+                <div class="md:col-span-4 space-y-3">
+                    <span class="text-brand-ivory uppercase font-bold block mb-2 font-heading">CONTACT</span>
+                    <p class="text-brand-ivory font-bold">(810) 275-5729</p>
+                    <p>tcollinsautobody@gmail.com</p>
+                    <p>5420 Baldwin Rd, Swartz Creek, MI 48473</p>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[11px]">
+                <p>© 2026 COLLINS AUTO BODY & RESTORATION LLC. ALL RIGHTS RESERVED.</p>
+                <p class="text-brand-copper">SWARTZ CREEK, MICHIGAN</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Estimate Request Modal -->
+    <div id="estimateModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-brand-navy/90 backdrop-blur-md">
+        <div class="bg-brand-ivory border border-brand-border max-w-lg w-full p-8 relative max-h-[90vh] overflow-y-auto font-mono text-xs text-left rounded-sm shadow-2xl">
+            
+            <button onclick="closeEstimateModal()" class="absolute top-5 right-5 text-brand-steel hover:text-brand-navy p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="space-y-2 mb-6 border-b border-brand-border pb-4">
+                <span class="text-brand-copper font-bold uppercase block">COLLINS AUTO BODY & RESTORATION</span>
+                <h3 class="font-heading font-extrabold text-3xl uppercase text-brand-navy">GET A FREE ESTIMATE</h3>
+            </div>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-brand-steel mb-1 uppercase">YOUR NAME *</label>
+                    <input type="text" required placeholder="Full Name" class="w-full bg-brand-ivoryDark border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-brand-steel mb-1 uppercase">PHONE *</label>
+                        <input type="tel" required placeholder="(810) 275-5729" class="w-full bg-brand-ivoryDark border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm">
+                    </div>
+                    <div>
+                        <label class="block text-brand-steel mb-1 uppercase">EMAIL *</label>
+                        <input type="email" required placeholder="name@example.com" class="w-full bg-brand-ivoryDark border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-brand-steel mb-1 uppercase">VEHICLE DETAILS</label>
+                    <input type="text" required placeholder="Year, Make, Model" class="w-full bg-brand-ivoryDark border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm">
+                </div>
+
+                <div>
+                    <label class="block text-brand-steel mb-1 uppercase">REPAIR OR RESTORATION NEEDED</label>
+                    <textarea rows="3" placeholder="Describe collision damage or custom restoration goals..." class="w-full bg-brand-ivoryDark border border-brand-border px-4 py-3 text-brand-navy focus:border-brand-copper focus:outline-none rounded-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-navy hover:bg-brand-copper text-brand-ivory py-4 font-heading font-bold text-xs uppercase tracking-widest transition-all rounded-sm shadow-sm">
+                    SUBMIT ESTIMATE REQUEST
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-brand-navy border border-brand-copper text-brand-ivory px-6 py-4 shadow-2xl font-mono text-xs flex items-center gap-3 rounded-sm">
+        <i class="fa-solid fa-circle-check text-brand-copper text-base"></i>
+        <span id="toastMsg">Your estimate request has been submitted!</span>
+    </div>
+
+    <script>
+        // --- MOBILE MENU TOGGLE ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                icon.className = 'fa-solid fa-xmark text-xl';
+            }
+        }
+
+        // --- ESTIMATE MODAL CONTROLLER ---
+        function openEstimateModal() {
+            document.getElementById('estimateModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEstimateModal() {
+            document.getElementById('estimateModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast("Thank you! Your estimate request has been sent to Collins Auto Body.");
+            e.target.reset();
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            closeEstimateModal();
+            showToast("Thank you! Our shop will contact you shortly regarding your estimate.");
+            e.target.reset();
+        }
+
+        // --- SCROLL REVEAL OBSERVER & HEADER TRANSITION ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const reveals = document.querySelectorAll('.reveal-up');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            reveals.forEach(reveal => observer.observe(reveal));
+
+            // Header scroll effect
+            const header = document.getElementById('mainHeader');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    header.classList.add('py-3.5', 'shadow-sm');
+                    header.classList.remove('py-5');
+                } else {
+                    header.classList.add('py-5');
+                    header.classList.remove('py-3.5', 'shadow-sm');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
